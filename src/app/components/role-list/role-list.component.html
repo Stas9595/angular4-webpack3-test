@@ -1,0 +1,99 @@
+<div class="role-list">
+  <div class="role-list__header">
+    <h3 class="role-list__title">Roles ({{ filteredRoles().length }})</h3>
+    <div class="role-list__controls">
+      <input
+        class="role-list__search"
+        [(ngModel)]="searchTerm"
+        placeholder="Search roles"
+      />
+      <select
+        class="role-list__filter-mode"
+        [(ngModel)]="filterMode"
+      >
+        <option value="all">Show All</option>
+        <option value="assigned" *ngIf="group">Assigned Roles</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="role-list__content">
+    <ul class="role-list__items">
+      <li
+        class="role-list__item"
+        *ngFor="let role of paginatedRoles()"
+        [ngClass]="{ 'role-list__item--editing': editingRoleId === role.id }"
+      >
+        <div *ngIf="editingRoleId === role.id; else roleReadMode">
+          <input
+            class="role-list__edit-input"
+            [(ngModel)]="editRoleName"
+          />
+          <button
+            class="role-list__edit-save"
+            (click)="saveRole(role.id)"
+          >
+            Save
+          </button>
+          <button
+            class="role-list__edit-cancel"
+            (click)="cancelRoleEdit()"
+          >
+            Cancel
+          </button>
+        </div>
+
+        <ng-template #roleReadMode>
+          <input
+            *ngIf="group"
+            class="role-list__checkbox"
+            type="checkbox"
+            [checked]="group?.roleIds.includes(role.id)"
+            [disabled]="group?.requiredRoleIds.includes(role.id)"
+            (change)="toggleRole(role.id)"
+          />
+          <input
+            *ngIf="!group"
+            class="role-list__checkbox-required"
+            type="checkbox"
+            [checked]="role.isRequired"
+            (change)="toggleRequiredRole(role)"
+          />
+          <span class="role-list__item-name">{{ role.name }}</span>
+          <button
+            *ngIf="!group"
+            class="role-list__item-edit"
+            (click)="startRoleEdit(role)"
+          >
+            ✏️
+          </button>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+
+  <div class="role-list__pagination">
+    <button
+      class="role-list__pagination-prev"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <input
+      class="role-list__pagination-input"
+      [(ngModel)]="currentPage"
+      (change)="goToPage()"
+      type="number"
+      min="1"
+      [max]="totalPages()"
+    />
+    <button
+      class="role-list__pagination-next"
+      (click)="nextPage()"
+      [disabled]="currentPage * rolesPerPage >= filteredRoles().length"
+    >
+      Next
+    </button>
+  </div>
+</div>

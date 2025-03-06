@@ -1,0 +1,172 @@
+.role-list {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.role-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.role-list__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.role-list__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.role-list__content {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+
+.role-list__search,
+.role-list__filter-mode {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.role-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #ccc;
+}
+
+.role-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.role-list__item:hover {
+  background: #fafafa;
+}
+
+.role-list__item--editing {
+  background: #ffffdd;
+}
+
+.role-list__item-name {
+  flex: 1;
+}
+
+.role-list__edit-input {
+  flex: 1;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.role-list__edit-save,
+.role-list__edit-cancel {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.role-list__edit-cancel {
+  background: #ccc;
+  color: #333;
+}
+
+.role-list__checkbox {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+.role-list__item-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.role-list__item-edit:hover {
+  color: #000;
+}
+.role-list__required-checkbox {
+  margin-left: 0.5rem;
+  transform: scale(1.2);
+}
+
+.role-list__pagination {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.role-list__pagination-prev,
+.role-list__pagination-next {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.role-list__pagination-prev[disabled],
+.role-list__pagination-next[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.role-list__pagination-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.role-list__add {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.role-list__add-input {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.role-list__add-button {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.role-list__add-button:hover {
+  background: #005fa3;
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Group } from './models/group.model'; // Adjust path if needed
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  selectedGroup: Group | null = null;
+  viewMode: 'groups' | 'roles' = 'groups';
+
+  // Handle event from GroupListComponent
+  onGroupSelected(group: Group) {
+    this.selectedGroup = group;
+  }
+
+  // Switch between 'groups' view and 'roles' view
+  switchView(mode: 'groups' | 'roles') {
+    this.viewMode = mode;
+  }
 }

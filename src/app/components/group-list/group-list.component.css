@@ -1,0 +1,123 @@
+.group-list__title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.group-list__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.group-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.group-list__edit-input {
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.group-list__edit-actions {
+  justify-content: flex-end;
+}
+
+.group-list__edit-save,
+.group-list__edit-cancel {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.group-list__item:hover {
+  background: #f0f8ff;
+}
+
+.group-list__name {
+  flex: 1;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.group-list__edit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+.group-list__edit:hover {
+  color: #000;
+}
+
+.group-list__edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+/* Add new group link/button */
+.group-list__add {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #007acc;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.group-list__add:hover {
+  color: #005999;
+}
+
+.group-list__add-new {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.group-list__add-new-input {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.group-list__add-new-btn {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.group-list__add-new-btn:hover {
+  background: #005fa3;
+}
+
+.group-list__item--selected {
+  background: linear-gradient(
+    90deg,
+    rgb(98, 223, 244) 0%,
+    rgba(164, 237, 244, 0.9) 100%
+  );
+}
+

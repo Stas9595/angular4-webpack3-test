@@ -1,0 +1,76 @@
+.permissions {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.permissions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #4f6dab;
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+.permissions-header__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.permissions-header__tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.permissions-header__tab {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s;
+}
+
+.permissions-header__tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.permissions-header__tab--active {
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+
+.permissions__divider {
+  height: 3px;
+  background: #444;
+  opacity: 0.15;
+  margin: 0;
+}
+
+.permissions-content {
+  flex: 1;
+  display: flex;
+}
+
+.permissions-content__sidebar {
+  width: 240px;
+  overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-right: none;
+  background:
+    linear-gradient(to bottom, #aaa 0%, #ddd 100%)
+    right center / 1px 100%
+    no-repeat;
+}
+
+.permissions-content__main {
+  flex: 1;
+  padding: 1rem;
+}

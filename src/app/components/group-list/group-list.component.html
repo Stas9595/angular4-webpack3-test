@@ -1,0 +1,60 @@
+<h3 class="group-list__title">Groups</h3>
+
+<ul class="group-list__items">
+  <li
+    class="group-list__item"
+    *ngFor="let group of groups"
+    [ngClass]="{ 'group-list__item--selected': group.id === selectedGroup?.id }"
+    (click)="onSelectGroup(group)"
+  >
+    <div
+      *ngIf="editingGroupId === group.id; else readMode"
+      class="group-list__edit-mode"
+    >
+      <input
+        class="group-list__edit-input"
+        [(ngModel)]="editName"
+      />
+
+      <div class="group-list__edit-actions">
+        <button
+          class="group-list__edit-save"
+          (click)="saveEdit(group.id)"
+        >
+          Save
+        </button>
+        <button
+          class="group-list__edit-cancel"
+          (click)="cancelEdit()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <ng-template #readMode>
+      <span class="group-list__name">{{ group.name }}</span>
+      <button
+        *ngIf="group.id === selectedGroup?.id"
+        class="group-list__edit"
+        (click)="startEdit(group, $event)"
+      >
+        ✏️
+      </button>
+    </ng-template>
+  </li>
+</ul>
+
+<div class="group-list__add-new">
+  <input
+    class="group-list__add-new-input"
+    [(ngModel)]="newGroupName"
+    placeholder="New Group Name"
+  />
+  <button
+    class="group-list__add-new-btn"
+    (click)="addGroup()"
+  >
+    +
+  </button>
+</div>
