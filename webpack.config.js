@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     polyfills: './src/polyfills.ts',
-    main: './src/main.ts'
+    main: './src/main.ts',
+    styles: './src/styles.css',
   },
 
   output: {

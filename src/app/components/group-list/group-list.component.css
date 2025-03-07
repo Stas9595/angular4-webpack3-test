@@ -46,7 +46,7 @@
 }
 
 .group-list__item:hover {
-  background: #f0f8ff;
+  background: #6eb0ea;
 }
 
 .group-list__name {
@@ -73,7 +73,6 @@
   max-width: 100%;
 }
 
-/* Add new group link/button */
 .group-list__add {
   display: inline-block;
   margin-top: 1rem;
@@ -90,14 +89,18 @@
 .group-list__add-new {
   margin-top: 1rem;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
+  justify-content: space-between;
 }
 
 .group-list__add-new-input {
   flex: 1;
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
+  height: 32px;
 }
 
 .group-list__add-new-btn {
@@ -108,16 +111,19 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 30px;
+  font-size: 1.1rem;
 }
+
 .group-list__add-new-btn:hover {
   background: #005fa3;
 }
 
 .group-list__item--selected {
-  background: linear-gradient(
-    90deg,
-    rgb(98, 223, 244) 0%,
-    rgba(164, 237, 244, 0.9) 100%
-  );
+  background: #7ca2ef;
 }
 

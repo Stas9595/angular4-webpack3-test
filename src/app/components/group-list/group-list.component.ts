@@ -10,6 +10,7 @@ import { Group } from '../../models/group.model';
 })
 export class GroupListComponent {
   groups = this.groupService.getGroups();
+  roles = this.rolesService.getRoles();
   newGroupName = '';
   selectedGroup: Group | null = null;
   editingGroupId: number | null = null;
@@ -21,10 +22,10 @@ export class GroupListComponent {
 
   addGroup() {
     if (this.newGroupName.trim()) {
-      const requiredRoles: number[] = this.rolesService.getRoles().filter(role => role.isRequired === true).map(role => role.id);
+      const requiredRoles: number[] = this.roles.filter((item) => item.isRequired === true).map((item) => item.id);
+      const notRequiredRoles: number[] = this.roles.filter((item) => item.isRequired === true).map((item) => item.id);
       console.log(requiredRoles);
-      this.groupService.addGroup(this.newGroupName, requiredRoles, requiredRoles);
-      // Update local array reference in case the service returns a new array
+      this.groupService.addGroup(this.newGroupName, notRequiredRoles, requiredRoles);
       this.groups = this.groupService.getGroups();
       this.newGroupName = '';
     }

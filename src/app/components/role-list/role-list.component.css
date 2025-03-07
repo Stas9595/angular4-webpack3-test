@@ -8,9 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .role-list__title {
@@ -104,46 +102,10 @@
 .role-list__item-edit:hover {
   color: #000;
 }
-.role-list__required-checkbox {
+.role-list__checkbox-required {
   margin-left: 0.5rem;
   transform: scale(1.2);
 }
-
-.role-list__pagination {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.role-list__pagination-prev,
-.role-list__pagination-next {
-  background: #007acc;
-  color: #fff;
-  border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.role-list__pagination-prev[disabled],
-.role-list__pagination-next[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.role-list__pagination-input {
-  width: 50px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 .role-list__add {
   display: flex;
   gap: 0.5rem;
@@ -169,4 +131,112 @@
 
 .role-list__add-button:hover {
   background: #005fa3;
+}
+
+.role-list__pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eee;
+}
+
+
+.role-list__pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.role-list__pagination-prev,
+.role-list__pagination-next {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.role-list__pagination-prev[disabled],
+.role-list__pagination-next[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.role-list__pagination-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.role-list__pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-btn {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.pagination-btn:hover:not([disabled]) {
+  background-color: #005fa3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.pagination-btn[disabled] {
+  background-color: #c6c6c6;
+  cursor: not-allowed;
+}
+
+.pagination-input {
+  width: 20px;
+  padding: 6px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pagination-input:focus {
+  border-color: #007acc;
+  box-shadow: 0 0 6px rgba(0,122,204,0.3);
+}
+
+.pagination-input::-webkit-outer-spin-button,
+.pagination-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pagination-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.pagination-text {
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #555;
+  white-space: nowrap;
+    margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

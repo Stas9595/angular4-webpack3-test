@@ -12,6 +12,7 @@ import { Role } from '../../models/role.model';
 export class RoleListComponent {
   @Input() group: Group | null = null;
 
+  protected readonly Math = Math;
   roles = this.roleService.getRoles();
   filterMode = 'all';
   searchTerm = '';
@@ -83,7 +84,7 @@ export class RoleListComponent {
   }
 
   totalPages() {
-    return Math.ceil(this.filteredRoles().length / this.rolesPerPage);
+    return Math.ceil(this.filteredRoles().length / this.rolesPerPage) || 1;
   }
 
   nextPage() {
@@ -99,10 +100,24 @@ export class RoleListComponent {
   }
 
   goToPage() {
+    const total = this.totalPages();
     if (this.currentPage < 1) {
       this.currentPage = 1;
-    } else if (this.currentPage > this.totalPages()) {
-      this.currentPage = this.totalPages();
     }
+    else if (this.currentPage > total) {
+      this.currentPage = total;
+    }
+  }
+
+  firstPage() {
+    this.currentPage = 1;
+  }
+
+  lastPage() {
+    this.currentPage = this.totalPages();
+  }
+
+  resetPage() {
+    this.currentPage = 1;
   }
 }
