@@ -17,7 +17,7 @@ export class RoleListComponent {
   filterMode = 'all';
   searchTerm = '';
   currentPage = 1;
-  rolesPerPage = 10;
+  rolesPerPage = 30;
   editingRoleId: number | null = null;
   editRoleName = '';
 
@@ -71,10 +71,18 @@ export class RoleListComponent {
   filteredRoles() {
     return this.roles.filter(role => {
       const matchesSearch = role.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-      if (this.filterMode === 'assigned' && this.group) {
-        return this.group.roleIds.includes(role.id) && matchesSearch;
+
+      if (this.group) {
+        if (this.filterMode === 'assigned') {
+          return this.group.roleIds.includes(role.id) && matchesSearch;
+        }
+        return matchesSearch;
+      } else {
+        if (this.filterMode === 'required') {
+          return role.isRequired && matchesSearch;
+        }
+        return matchesSearch;
       }
-      return matchesSearch;
     });
   }
 

@@ -120,10 +120,10 @@
 }
 
 .group-list__add-new-btn:hover {
-  background: #005fa3;
+  background: #90c3ea;
 }
 
 .group-list__item--selected {
-  background: #7ca2ef;
+  background: #bccaf1;
 }
 

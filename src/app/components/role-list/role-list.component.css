@@ -1,14 +1,16 @@
 .role-list {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 .role-list__header {
   display: flex;
   align-items: center;
+  padding: 1rem;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .role-list__title {
@@ -26,7 +28,7 @@
 .role-list__content {
   flex: 1;
   overflow-y: auto;
-  margin-bottom: 1rem;
+  padding: 0 1rem;
 }
 
 
@@ -136,17 +138,23 @@
 .role-list__pagination-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 1rem;
-  padding: 0.5rem 0;
-  border-top: 1px solid #eee;
+  justify-content: center;
+  flex-shrink: 0;
+  border-top: 1px solid #ccc;
 }
 
+.role-list__pagination-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  flex-shrink: 0;
+}
 
 .role-list__pagination {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -168,12 +176,14 @@
 }
 
 .role-list__pagination-input {
-  width: 50px;
-  text-align: center;
+  width: 30px;
+  padding: 6px;
+  text-align: left;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin: 5px 5px 5px 5px;
 }
 
 .role-list__pagination {
@@ -189,6 +199,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   cursor: pointer;
+  margin: 0 1px;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -202,16 +213,6 @@
   cursor: not-allowed;
 }
 
-.pagination-input {
-  width: 20px;
-  padding: 6px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
 .pagination-input:focus {
   border-color: #007acc;
   box-shadow: 0 0 6px rgba(0,122,204,0.3);
@@ -221,10 +222,6 @@
 .pagination-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.pagination-input[type=number] {
-  -moz-appearance: textfield;
 }
 
 .pagination-text {
@@ -237,6 +234,6 @@
   font-size: 14px;
   color: #555;
   white-space: nowrap;
-    margin-top: 1rem;
+  margin-top: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

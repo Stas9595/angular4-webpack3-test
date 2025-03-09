@@ -1,19 +1,15 @@
 <div class="role-list">
   <div class="role-list__header">
-    <h3 class="role-list__title">Roles ({{ filteredRoles().length }} Items)</h3>
+    <h3 class="role-list__title">Roles ({{ filteredRoles().length }})</h3>
     <div class="role-list__controls">
       <input
         class="role-list__search"
         [(ngModel)]="searchTerm"
-        (ngModelChange)="resetPage()"
         placeholder="Search roles"
       />
-      <select
-        class="role-list__filter-mode"
-        [(ngModel)]="filterMode"
-        (ngModelChange)="resetPage()"
-      >
+      <select class="role-list__filter-mode" [(ngModel)]="filterMode">
         <option value="all">Show All</option>
+        <option value="required" *ngIf="!group">Required Roles</option>
         <option value="assigned" *ngIf="group">Assigned Roles</option>
       </select>
     </div>
@@ -27,30 +23,16 @@
         [ngClass]="{ 'role-list__item--editing': editingRoleId === role.id }"
       >
         <div *ngIf="editingRoleId === role.id; else roleReadMode">
-          <input
-            class="role-list__edit-input"
-            [(ngModel)]="editRoleName"
-          />
-          <button
-            class="role-list__edit-save"
-            (click)="saveRole(role.id)"
-          >
-            Save
-          </button>
-          <button
-            class="role-list__edit-cancel"
-            (click)="cancelRoleEdit()"
-          >
-            Cancel
-          </button>
+          <input class="role-list__edit-input" [(ngModel)]="editRoleName" />
+          <button class="role-list__edit-save" (click)="saveRole(role.id)">Save</button>
+          <button class="role-list__edit-cancel" (click)="cancelRoleEdit()">Cancel</button>
         </div>
-
         <ng-template #roleReadMode>
           <input
             *ngIf="group"
             class="role-list__checkbox"
             type="checkbox"
-            [checked]="group?.roleIds.includes(role.id)"
+            [checked]="group?.roleIds.includes(role.id) || group?.requiredRoleIds.includes(role.id)"
             [disabled]="group?.requiredRoleIds.includes(role.id)"
             (change)="toggleRole(role.id)"
           />
@@ -62,56 +44,25 @@
             (change)="toggleRequiredRole(role)"
           />
           <span class="role-list__item-name">{{ role.name }}</span>
-          <button
-            *ngIf="!group"
-            class="role-list__item-edit"
-            (click)="startRoleEdit(role)"
-          >
-            ✏️
-          </button>
+          <button class="role-list__item-edit" (click)="startRoleEdit(role)">✏️</button>
         </ng-template>
       </li>
     </ul>
   </div>
 
-  <div class="role-list__pagination-container">
-    <div class="role-list__pagination">
-      <button class="pagination-btn" (click)="firstPage()" [disabled]="currentPage === 1">
-        &laquo;
-      </button>
-      <button class="pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
-        &lsaquo;
-      </button>
-
+  <div>
+    <div class="role-list__pagination-container">
+      <button class="pagination-btn" (click)="firstPage()" [disabled]="currentPage === 1">«</button>
+      <button class="pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">‹</button>
       <span class="pagination-text">Page</span>
-
-      <input
-        class="pagination-input"
-        [(ngModel)]="currentPage"
-        (change)="goToPage()"
-        type="number"
-        [min]="1"
-      />
-
+      <input class="role-list__pagination-input" [(ngModel)]="currentPage" (input)="goToPage()" type="number" min="1" [max]="totalPages()" />
       <span class="pagination-text">of {{ totalPages() }}</span>
-
-      <button class="pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages()">
-        &rsaquo;
-      </button>
-      <button class="pagination-btn" (click)="lastPage()" [disabled]="currentPage === totalPages()">
-        &raquo;
-      </button>
-    </div>
-
-    <div class="pagination-info">
-      <ng-container *ngIf="filteredRoles().length; else noRoles">
-        Displaying {{ (currentPage - 1) * rolesPerPage + 1 }} -
-        {{ Math.min(currentPage * rolesPerPage, filteredRoles().length) }}
+      <button class="pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages()">›</button>
+      <button class="pagination-btn" (click)="lastPage()" [disabled]="currentPage === totalPages()">»</button>
+      <div class="role-list__pagination-info">
+        Showing {{ (currentPage - 1) * rolesPerPage + 1 }}–{{ Math.min(currentPage * rolesPerPage, filteredRoles().length) }}
         of {{ filteredRoles().length }}
-      </ng-container>
-      <ng-template #noRoles>
-        No roles found.
-      </ng-template>
+      </div>
     </div>
   </div>
 </div>
