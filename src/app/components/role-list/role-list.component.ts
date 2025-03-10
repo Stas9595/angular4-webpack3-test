@@ -17,22 +17,22 @@ export class RoleListComponent {
   filterMode = 'all';
   searchTerm = '';
   currentPage = 1;
-  rolesPerPage = 30;
+  rolesPerPage = 25;
   editingRoleId: number | null = null;
   editRoleName = '';
 
   constructor(private roleService: RoleService, private groupService: GroupService) {}
 
+  saveRole(roleId: number) {
+    if (this.editRoleName.trim()) {
+      this.roleService.editRoleName(roleId, this.editRoleName);
+    }
+    this.cancelRoleEdit();
+  }
+
   startRoleEdit(role: Role) {
     this.editingRoleId = role.id;
     this.editRoleName = role.name;
-  }
-
-  saveRole(roleId: number) {
-    if (this.editRoleName.trim()) {
-      this.roleService.editRole(roleId, this.editRoleName);
-    }
-    this.cancelRoleEdit();
   }
 
   cancelRoleEdit() {
@@ -107,16 +107,6 @@ export class RoleListComponent {
     }
   }
 
-  goToPage() {
-    const total = this.totalPages();
-    if (this.currentPage < 1) {
-      this.currentPage = 1;
-    }
-    else if (this.currentPage > total) {
-      this.currentPage = total;
-    }
-  }
-
   firstPage() {
     this.currentPage = 1;
   }
@@ -125,7 +115,13 @@ export class RoleListComponent {
     this.currentPage = this.totalPages();
   }
 
-  resetPage() {
-    this.currentPage = 1;
+  goToPage() {
+    const total = this.totalPages();
+    if (this.currentPage < 1) {
+      this.currentPage = 1;
+    }
+    else if (this.currentPage > total) {
+      this.currentPage = total;
+    }
   }
 }

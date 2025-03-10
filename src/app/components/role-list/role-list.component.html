@@ -44,7 +44,7 @@
             (change)="toggleRequiredRole(role)"
           />
           <span class="role-list__item-name">{{ role.name }}</span>
-          <button class="role-list__item-edit" (click)="startRoleEdit(role)">✏️</button>
+          <button class="role-list__item-edit" *ngIf="!group" (click)="startRoleEdit(role)">✏️</button>
         </ng-template>
       </li>
     </ul>
@@ -52,13 +52,13 @@
 
   <div>
     <div class="role-list__pagination-container">
-      <button class="pagination-btn" (click)="firstPage()" [disabled]="currentPage === 1">«</button>
-      <button class="pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">‹</button>
-      <span class="pagination-text">Page</span>
-      <input class="role-list__pagination-input" [(ngModel)]="currentPage" (input)="goToPage()" type="number" min="1" [max]="totalPages()" />
-      <span class="pagination-text">of {{ totalPages() }}</span>
-      <button class="pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages()">›</button>
-      <button class="pagination-btn" (click)="lastPage()" [disabled]="currentPage === totalPages()">»</button>
+      <button class="role-list__pagination-btn" (click)="firstPage()" [disabled]="currentPage === 1">«</button>
+      <button class="role-list__pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">‹</button>
+      <span class="role-list__pagination-text">Page</span>
+      <input class="role-list__pagination-input" [(ngModel)]="currentPage" (change)="goToPage()" (input)="goToPage()" type="number" min="1" [max]="totalPages()" />
+      <span class="role-list__pagination-text">of {{ totalPages() }}</span>
+      <button class="role-list__pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages()">›</button>
+      <button class="role-list__pagination-btn" (click)="lastPage()" [disabled]="currentPage === totalPages()">»</button>
       <div class="role-list__pagination-info">
         Showing {{ (currentPage - 1) * rolesPerPage + 1 }}–{{ Math.min(currentPage * rolesPerPage, filteredRoles().length) }}
         of {{ filteredRoles().length }}

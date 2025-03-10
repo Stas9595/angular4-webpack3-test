@@ -22,6 +22,28 @@
   transition: background 0.2s;
 }
 
+.group-list__item:hover {
+  background: #6eb0ea;
+}
+
+.group-list__name {
+  flex: 1;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.group-list__edit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.group-list__edit:hover {
+  color: #000;
+}
+
 .group-list__edit-input {
   padding: 0.25rem;
   border: 1px solid #ccc;
@@ -45,44 +67,15 @@
   cursor: pointer;
 }
 
-.group-list__item:hover {
-  background: #6eb0ea;
-}
-
-.group-list__name {
-  flex: 1;
-  font-size: 1rem;
-  margin-left: 0.5rem;
-}
-
-.group-list__edit {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #666;
-  transition: color 0.2s;
-}
-.group-list__edit:hover {
-  color: #000;
-}
-
 .group-list__edit-mode {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   max-width: 100%;
+  margin: 0.3rem;
 }
 
-.group-list__add {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #007acc;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.group-list__add:hover {
+.group-list__add-new:hover {
   color: #005999;
 }
 
